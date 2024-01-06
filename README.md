@@ -40,3 +40,32 @@ Classes de Equivalência
 Sobre classes de equivalência do mundo de testes, que descrevem similaridades entre os cenários de testes
 Isto é importante para descobrir quantos testes devemos criar
 A ideia é criar nenhum teste a mais ou a menos
+
+Data Providers!
+
+Sobre Data Providers, os provedores de dados permitem que "alimentemos" os testes com cenários diversos, sem repetir o código e os asserts
+Os data providers permitem rodar um mesmo teste inúmeras vezes de acordo com uma fonte de dados e passando argumentos diferentes em cada vez.
+Deve-se criar um método sem o prefixo test para ser o dataProvider.
+O método deve retornar um array multidimensional, ou seja, uma lista de valores utilizados para a realização dos testes.
+O método de teste será executado uma vez para cada item do data provider, ou seja, se o data provider tiver três itens, o método de teste seja executado três vezes.
+Métodos de testes não podem ter argumentos, com exceção para métodos que possuem um data provider.
+O método que for utilizar o data provider deve utilizar a anotação @dataProvider getDataForTests.
+Os valores de cada item serão informados como argumentos do método de testes.
+Pode-se adiciona uma chave para identificar um item do data provider tornando mais fácil a identificação de um erro.
+
+-- Métodos
+
+A tarefa mais demorada ao escrever testes de unidade normalmente é preparar o cenário, utilizando os dados necessários para o teste, e depois desfazer as ações que possam afetar outros testes.
+
+Para executar código antes ou depois de testes, o PHPUnit nos fornece as fixtures. São métodos que vão ser executados em momentos específicos.
+
+public static function setUpBeforeClass(): void - Método executado uma vez só, antes de todos os testes da classe
+public function setUp(): void - Método executado antes de cada teste da classe
+public function tearDown(): void - Método executado após cada teste da classe
+public static function tearDownAfterClass(): void - Método executado uma vez só, após todos os testes da classe
+
+
+Que existe um método setUp, que é chamado antes de cada teste
+Que os provedores de dados sempre são executados antes do método setup
+Que caso queiramos executar algum código antes dos provedores de dados, existe o método setUpBeforeClass
+Que, análogo ao setUp e setUpBeforeClass, existem os métodos tearDown e tearDownAfterClass, para executar um código após os testes
