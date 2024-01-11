@@ -69,3 +69,9 @@ Que existe um método setUp, que é chamado antes de cada teste
 Que os provedores de dados sempre são executados antes do método setup
 Que caso queiramos executar algum código antes dos provedores de dados, existe o método setUpBeforeClass
 Que, análogo ao setUp e setUpBeforeClass, existem os métodos tearDown e tearDownAfterClass, para executar um código após os testes
+
+Como verificar que o código lança as exceções esperadas
+Em geral, exceções também fazem parte das regras de negócio e precisam ser verificadas
+Para tal o PHPUnit oferece os métodos expectException e expectExceptionMessage da classe TestCase:
+expectException(\NomeDaExcecao::class)
+expectExceptionMessage(mensagemDeExcecao)
